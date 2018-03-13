@@ -13,6 +13,7 @@ public class Server {
 
     public Server(int port){
         workers = Collections.synchronizedList(new ArrayList<>());
+
         try {
             serverSocket = new ServerSocket(port);
         } catch (IOException e) {

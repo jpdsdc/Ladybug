@@ -16,4 +16,6 @@ public class Event {
         this.sessions = sessions;
         this.price = price;
     }
+
+    //TODO: Buy event
 }

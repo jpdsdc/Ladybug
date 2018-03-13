@@ -5,7 +5,7 @@ public abstract class Menu {
     private String[] options;
     //TODO: input scanner
 
-    public Menu(String... options){
+    public Menu(String[] options){
         this.options = options;
     }
 

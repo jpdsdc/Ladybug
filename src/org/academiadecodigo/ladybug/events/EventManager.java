@@ -11,11 +11,9 @@ public class EventManager {
         events = new LinkedList<>();
     }
 
-    /**
-     * Add a new event
-     * @param eventType type of event
-     */
-    public void addEvent(EventType eventType){}
+    public void addEvent(EventType eventType){
+        events.add(EventFactory.createEvent(eventType));
+    }
 
     public Event getEvent(Event event){ return null; }
 }

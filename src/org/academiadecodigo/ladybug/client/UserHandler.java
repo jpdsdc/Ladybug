@@ -4,6 +4,5 @@ public class UserHandler implements Runnable {
 
     @Override
     public void run() {
-
     }
 }
