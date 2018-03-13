@@ -1,13 +1,10 @@
 package org.academiadecodigo.ladybug;
 
-import org.academiadecodigo.ladybug.server.Server;
-
-import java.util.Date;
+import org.academiadecodigo.ladybug.menu.parent.MenuHandler;
 
 public class Main {
 
     public static void main(String[] args) {
-       new Server(9000);
-        System.out.println(new Date());
+       new MenuHandler().setup();
     }
 }
