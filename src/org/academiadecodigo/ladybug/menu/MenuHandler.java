@@ -10,4 +10,11 @@ public class MenuHandler {
     public MenuHandler(){
         eventManager = new EventManager();
     }
+
+    /**
+     * Setup in an action order
+     */
+    public void setup(){
+        new MainMenu();
+    }
 }

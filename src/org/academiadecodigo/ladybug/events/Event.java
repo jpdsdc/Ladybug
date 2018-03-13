@@ -8,7 +8,8 @@ public class Event {
     private String[] sessions;
     private double price;
 
-    public Event(EventType eventType, String name, Location[] locations, String[] sessions, double price) {
+    public Event(EventType eventType, String name, Location[] locations,
+                 String[] sessions, double price) {
         this.eventType = eventType;
         this.name = name;
         this.locations = locations;

@@ -11,6 +11,10 @@ public class EventManager {
         events = new LinkedList<>();
     }
 
+    /**
+     * Add a new event
+     * @param eventType type of event
+     */
     public void addEvent(EventType eventType){}
 
     public Event getEvent(Event event){ return null; }

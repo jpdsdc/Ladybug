@@ -11,9 +11,13 @@ public class Server {
     private List<ServerWorker> workers;
     private ServerSocket serverSocket;
 
-    public Server(int port) throws IOException {
+    public Server(int port){
         workers = Collections.synchronizedList(new ArrayList<>());
-        serverSocket = new ServerSocket(port);
+        try {
+            serverSocket = new ServerSocket(port);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

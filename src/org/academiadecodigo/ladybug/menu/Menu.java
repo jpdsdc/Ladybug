@@ -1,14 +1,13 @@
 package org.academiadecodigo.ladybug.menu;
 
-import java.util.HashSet;
-import java.util.Set;
+public abstract class Menu {
 
-public class Menu {
-
-    private Set<String> options;
+    private String[] options;
     //TODO: input scanner
 
-    public Menu(){
-        options = new HashSet<>();
+    public Menu(String... options){
+        this.options = options;
     }
+
+    public abstract void create();
 }
