@@ -22,4 +22,6 @@ public class AuthController extends AbstractController {
         authService.register("testeeeee", "tessssste");
         return authService.authenticate(username, password);
     }
+
+
 }

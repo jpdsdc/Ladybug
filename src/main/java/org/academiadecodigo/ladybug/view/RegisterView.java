@@ -3,13 +3,13 @@ package org.academiadecodigo.ladybug.view;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.string.PasswordInputScanner;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
-import org.academiadecodigo.ladybug.controller.AuthController;
+import org.academiadecodigo.ladybug.controller.RegisterController;
 
-public class LoginView extends AbstractView {
+public class RegisterView extends AbstractView {
 
-    private AuthController authController;
+    private RegisterController registerController;
 
-    public LoginView(Prompt prompt) {
+    public RegisterView(Prompt prompt) {
         super(prompt);
     }
 
@@ -17,19 +17,19 @@ public class LoginView extends AbstractView {
     public void show() {
 
         StringInputScanner usernameScanner = new StringInputScanner();
-        usernameScanner.setMessage("What's your username? ");
+        usernameScanner.setMessage("Choose your username? ");
 
         PasswordInputScanner passwordScanner = new PasswordInputScanner();
-        passwordScanner.setMessage("What's your password? ");
+        passwordScanner.setMessage("Choose your password? ");
 
         String username = prompt.getUserInput(usernameScanner);
         String password = prompt.getUserInput(passwordScanner);
 
-        authController.login(username, password);
+        registerController.register(username, password);
 
     }
 
-    public void setAuthController(AuthController authController) {
-        this.authController = authController;
+    public void setRegisterController(RegisterController registerController) {
+        this.registerController = registerController;
     }
 }
