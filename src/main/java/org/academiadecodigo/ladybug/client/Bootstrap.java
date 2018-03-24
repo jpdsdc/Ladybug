@@ -1,13 +1,13 @@
-package org.academiadecodigo.ladybug;
+package org.academiadecodigo.ladybug.client;
 
 import org.academiadecodigo.bootcamp.Prompt;
-import org.academiadecodigo.ladybug.controller.AuthController;
-import org.academiadecodigo.ladybug.controller.RegisterController;
-import org.academiadecodigo.ladybug.service.AuthService;
-import org.academiadecodigo.ladybug.service.JdbcAuthService;
-import org.academiadecodigo.ladybug.view.FirstView;
-import org.academiadecodigo.ladybug.view.LoginView;
-import org.academiadecodigo.ladybug.view.RegisterView;
+import org.academiadecodigo.ladybug.client.controller.AuthController;
+import org.academiadecodigo.ladybug.client.controller.RegisterController;
+import org.academiadecodigo.ladybug.client.service.AuthService;
+import org.academiadecodigo.ladybug.client.service.JdbcAuthService;
+import org.academiadecodigo.ladybug.client.view.FirstView;
+import org.academiadecodigo.ladybug.client.view.LoginView;
+import org.academiadecodigo.ladybug.client.view.RegisterView;
 
 public class Bootstrap {
 

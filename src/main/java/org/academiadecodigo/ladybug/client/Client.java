@@ -1,4 +1,4 @@
-package org.academiadecodigo.ladybug;
+package org.academiadecodigo.ladybug.client;
 
 public class Client {
 
