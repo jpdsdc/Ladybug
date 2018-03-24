@@ -1,5 +1,7 @@
 package org.academiadecodigo.ladybug.server;
 
+import org.academiadecodigo.ladybug.utils.Ansi;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -9,9 +11,9 @@ import java.util.List;
 
 public class Server {
 
-    private static final int PORT = 8080;
-    private List<ServerWorker> workers;
+    private final int PORT = 8080;
 
+    private List<ServerWorker> workers;
     private ServerSocket serverSocket;
 
     public static void main(String[] args) {
@@ -20,46 +22,41 @@ public class Server {
 
     public Server(){
         workers = Collections.synchronizedList(new ArrayList<>());
+        start();
+    }
 
+    /**
+     * Starts the server and starts accepting clients
+     */
+    private void start() {
         try {
             serverSocket = new ServerSocket(PORT);
-            connect();
-            System.out.println("STARTING CONNECTION...\n### CONNECTION ESTABLISHED ###");
+            System.out.println(Ansi.Green.colorize("STARTING CONNECTION...\n### CONNECTION ESTABLISHED ###"));
+
+            acceptingClients();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void connect() throws IOException {
-
+    /**
+     * Wait for a client to be accepted by the server
+     * and add a server worker when the client joined
+     *
+     * @throws IOException exception in case the whole thing get fucked
+     */
+    public void acceptingClients() throws IOException {
         while (serverSocket.isBound()){
             Socket clientSocket = serverSocket.accept();
-            int clientPort = clientSocket.getPort();
 
-            ServerWorker serverWorker = new ServerWorker(clientSocket, clientPort);
+            ServerWorker serverWorker = new ServerWorker(clientSocket);
             workers.add(serverWorker);
 
             Thread thread = new Thread(serverWorker);
             thread.start();
             System.out.println(Thread.currentThread().getName());
         }
+
         serverSocket.close();
     }
-
-    class ServerWorker implements Runnable {
-
-        private Socket clientSocket;
-        private int clientPort;
-
-        public ServerWorker(Socket clientSocket, int clientPort){
-            this.clientSocket = clientSocket;
-            this.clientPort = clientPort;
-        }
-
-        @Override
-        public void run() {
-
-        }
-    }
-
 }
