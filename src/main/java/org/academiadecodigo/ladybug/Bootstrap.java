@@ -16,7 +16,5 @@ public class Bootstrap {
         AuthController authController = new AuthController(loginView, authService);
         loginView.setAuthController(authController);
         authController.init();
-
-
     }
 }
