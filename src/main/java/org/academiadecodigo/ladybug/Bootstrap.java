@@ -8,7 +8,6 @@ import org.academiadecodigo.ladybug.view.LoginView;
 
 public class Bootstrap {
 
-
     public void wiredObjects() {
 
         Prompt prompt = new Prompt(System.in, System.out);

@@ -1,4 +1,4 @@
-package org.academiadecodigo.ladybug.client;
+package org.academiadecodigo.ladybug.model;
 
 public class User {
 

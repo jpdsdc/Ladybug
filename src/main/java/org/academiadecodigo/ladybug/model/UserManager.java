@@ -1,4 +1,4 @@
-package org.academiadecodigo.ladybug.client;
+package org.academiadecodigo.ladybug.model;
 
 import java.io.*;
 import java.nio.charset.Charset;

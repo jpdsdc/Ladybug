@@ -1,4 +1,4 @@
-package org.academiadecodigo.ladybug.events;
+package org.academiadecodigo.ladybug.model.events;
 
 public enum EventType {
 

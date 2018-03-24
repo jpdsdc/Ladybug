@@ -1,7 +1,6 @@
-package org.academiadecodigo.ladybug.events;
+package org.academiadecodigo.ladybug.model.events;
 
 import java.util.Arrays;
-import java.util.Calendar;
 
 public class Event {
 

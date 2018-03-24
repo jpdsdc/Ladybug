@@ -3,9 +3,8 @@ package org.academiadecodigo.ladybug.menu.actions;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.string.PasswordInputScanner;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
-import org.academiadecodigo.ladybug.client.UserManager;
+import org.academiadecodigo.ladybug.model.UserManager;
 import org.academiadecodigo.ladybug.menu.parent.AbstractMenuAction;
-import org.academiadecodigo.ladybug.menu.parent.MenuAction;
 
 public class LoginAction extends AbstractMenuAction {
 

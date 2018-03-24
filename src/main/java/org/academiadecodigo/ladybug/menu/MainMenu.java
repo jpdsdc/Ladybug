@@ -1,10 +1,8 @@
 package org.academiadecodigo.ladybug.menu;
 
 import org.academiadecodigo.bootcamp.Prompt;
-import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
-import org.academiadecodigo.ladybug.client.User;
-import org.academiadecodigo.ladybug.client.UserManager;
-import org.academiadecodigo.ladybug.events.EventManager;
+import org.academiadecodigo.ladybug.model.UserManager;
+import org.academiadecodigo.ladybug.model.events.EventManager;
 import org.academiadecodigo.ladybug.menu.actions.LoginAction;
 import org.academiadecodigo.ladybug.menu.actions.RegisterAction;
 import org.academiadecodigo.ladybug.menu.parent.Menu;
