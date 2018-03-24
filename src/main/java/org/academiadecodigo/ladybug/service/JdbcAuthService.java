@@ -8,11 +8,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class AuthServiceImpl implements AuthService {
+public class JdbcAuthService implements AuthService {
 
     private Connection connection;
 
-    public AuthServiceImpl(){
+    public JdbcAuthService(){
         connection = new ConnectionManager().getConnection();
     }
 
