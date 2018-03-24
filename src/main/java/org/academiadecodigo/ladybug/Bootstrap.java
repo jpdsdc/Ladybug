@@ -4,7 +4,7 @@ import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.ladybug.controller.AuthController;
 import org.academiadecodigo.ladybug.controller.RegisterController;
 import org.academiadecodigo.ladybug.service.AuthService;
-import org.academiadecodigo.ladybug.service.AuthServiceImpl;
+import org.academiadecodigo.ladybug.service.JdbcAuthService;
 import org.academiadecodigo.ladybug.view.FirstView;
 import org.academiadecodigo.ladybug.view.LoginView;
 import org.academiadecodigo.ladybug.view.RegisterView;
@@ -12,10 +12,9 @@ import org.academiadecodigo.ladybug.view.RegisterView;
 public class Bootstrap {
 
     public void wiredObjects() {
-
         Prompt prompt = new Prompt(System.in, System.out);
 
-        AuthService authService = new AuthServiceImpl();
+        AuthService authService = new JdbcAuthService();
         FirstView firstView = new FirstView(prompt);
         RegisterView registerView = new RegisterView(prompt);
         LoginView loginView = new LoginView(prompt);
@@ -30,7 +29,5 @@ public class Bootstrap {
 
         registerController.setAuthService(authService);
         firstView.show();
-
-
     }
 }

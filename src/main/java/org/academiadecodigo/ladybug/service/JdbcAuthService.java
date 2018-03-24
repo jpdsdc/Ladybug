@@ -21,6 +21,11 @@ public class JdbcAuthService implements AuthService {
         String query = "SELECT * FROM users WHERE username='" + username +
                 "' AND password='" + password + "'";
 
+        if(exists(username)){
+            System.out.println("User don't exists.");
+            authenticate(username, password);
+        }
+
         try {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(query);
@@ -38,6 +43,11 @@ public class JdbcAuthService implements AuthService {
 
         User user = null;
 
+        if(exists(username)){
+            System.out.println("Username already exists, try again.");
+            register(username, password);
+        }
+
         try {
             Statement st = connection.createStatement();
             int rowsAffected = st.executeUpdate(query);
@@ -50,5 +60,19 @@ public class JdbcAuthService implements AuthService {
         }
 
         return user;
+    }
+
+    @Override
+    public boolean exists(String username) {
+        String query = "SELECT username, password WHERE username = '" + username  + "');";
+
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            return rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

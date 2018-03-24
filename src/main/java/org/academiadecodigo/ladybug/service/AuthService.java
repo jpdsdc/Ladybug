@@ -20,4 +20,10 @@ public interface AuthService {
      */
     User register(String username, String password);
 
+    /**
+     * Check if the user already exists
+     * @param username user username
+     * @return if the user already exists
+     */
+    boolean exists(String username);
 }

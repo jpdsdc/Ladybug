@@ -25,4 +25,9 @@ public class SimpleAuthService implements AuthService {
     public User register(String username, String password) {
         return new User(username, password);
     }
+
+    @Override
+    public boolean exists(String username) {
+        return false;
+    }
 }
