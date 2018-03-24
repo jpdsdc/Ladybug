@@ -5,8 +5,7 @@ import org.academiadecodigo.bootcamp.scanners.string.PasswordInputScanner;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 import org.academiadecodigo.ladybug.controller.AuthController;
 
-public class LoginView extends AbstractView{
-
+public class LoginView extends AbstractView {
 
     private AuthController authController;
 
