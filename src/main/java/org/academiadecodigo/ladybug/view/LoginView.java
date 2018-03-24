@@ -25,7 +25,13 @@ public class LoginView extends AbstractView {
         String username = prompt.getUserInput(usernameScanner);
         String password = prompt.getUserInput(passwordScanner);
 
-        authController.login(username, password);
+        if(authController.login(username, password)){
+            System.out.println("Welcome.");
+            return;
+        }
+
+        System.out.println("Ups!? Try again.");
+        show();
     }
 
     public void setAuthController(AuthController authController) {

@@ -8,15 +8,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class AuthServiceImpl implements AuthService {
+public class JdbcAuthService implements AuthService {
 
     private Connection connection;
 
-    public AuthServiceImpl(){
+    public JdbcAuthService(){
         connection = new ConnectionManager().getConnection();
     }
 
-    //TODO: needs to be tested
     @Override
     public boolean authenticate(String username, String password) {
         String query = "SELECT * FROM users WHERE username='" + username +

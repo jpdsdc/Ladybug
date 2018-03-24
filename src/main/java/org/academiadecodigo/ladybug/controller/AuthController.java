@@ -18,7 +18,6 @@ public class AuthController extends AbstractController {
     }
 
     public boolean login(String username, String password) {
-        authService.register("testeeeee", "tessssste");
         return authService.authenticate(username, password);
     }
 
