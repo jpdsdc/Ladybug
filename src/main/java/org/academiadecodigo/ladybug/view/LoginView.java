@@ -26,7 +26,6 @@ public class LoginView extends AbstractView {
         String password = prompt.getUserInput(passwordScanner);
 
         authController.login(username, password);
-
     }
 
     public void setAuthController(AuthController authController) {

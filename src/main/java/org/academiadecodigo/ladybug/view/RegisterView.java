@@ -26,7 +26,6 @@ public class RegisterView extends AbstractView {
         String password = prompt.getUserInput(passwordScanner);
 
         registerController.register(username, password);
-
     }
 
     public void setRegisterController(RegisterController registerController) {

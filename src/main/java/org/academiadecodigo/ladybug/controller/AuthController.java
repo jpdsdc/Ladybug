@@ -15,7 +15,6 @@ public class AuthController extends AbstractController {
     @Override
     public void init() {
         view.show();
-
     }
 
     public boolean login(String username, String password) {
