@@ -5,42 +5,82 @@ import java.net.Socket;
 
 public class UserHandler implements Runnable {
 
-    private User user;
-    private Socket socket;
-    private BufferedReader inputBufferedReader;
-    private BufferedWriter outputBufferedReader;
 
-    public UserHandler(User user) {
-        this.user = user;
-    }
+	private Socket socket;
+	private BufferedReader in;
+	private BufferedWriter out;
+	private static final String SERVER = "localhost";
+	private static final int PORT = 3306;
 
-    public void init(String server, int port) {
-        while (true) {
-            try {
-                socket = new Socket(server, port);
-                setupSocketStreams();
+	private void init(String server, int port) {
+		while (true) {
+			try {
+				socket = new Socket(server, port);
+				System.out.println("Connected: " + socket);
+				start();
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
-    public void makeRequest(){
+	private void start() {
+		Thread thread = new Thread(this);
+		thread.start();
 
-    }
+		setupSocketStreams();
+		makeRequest();
 
-    public void receiveRequest(){
+	}
 
-    }
+	private void makeRequest() {
+		while (!socket.isClosed()) {
+			String message = null;
 
-    private void setupSocketStreams() throws IOException {
+			try {
+				message = in.readLine();
+			} catch (IOException e) {
+				System.err.println(e.getMessage());
+				break;
+			}
 
-        inputBufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        outputBufferedReader = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+			if (message == null) {
+				break;
+			}
 
-    }
-    @Override
-    public void run() {
-    }
+			try {
+				out.write(message);
+				out.newLine();
+				out.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					socket.close();
+					in.close();
+					out.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	private void setupSocketStreams() {
+		try {
+			in = new BufferedReader(new InputStreamReader(System.in));
+			out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+
+		} catch (IOException e) {
+			System.err.println(e.getMessage());
+		}
+
+	}
+
+	@Override
+	public void run() {
+		init(SERVER, PORT);
+
+	}
 }
