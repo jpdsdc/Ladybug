@@ -33,8 +33,6 @@ public class JdbcAuthService implements AuthService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
         return false;
     }
 
@@ -73,7 +71,7 @@ public class JdbcAuthService implements AuthService {
             ResultSet rs = st.executeQuery(query);
             status = rs.next();
         } catch (SQLException e) {
-            e.printStackTrace();
+	        System.err.println(e.getMessage());
         }
 
         return status;
