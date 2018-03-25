@@ -32,7 +32,6 @@ public class Server {
         try {
             serverSocket = new ServerSocket(PORT);
             System.out.println(Ansi.Green.colorize("STARTING CONNECTION...\n### CONNECTION ESTABLISHED ###"));
-
             acceptingClients();
         } catch (IOException e) {
             e.printStackTrace();
@@ -49,6 +48,7 @@ public class Server {
         while (serverSocket.isBound()){
             Socket clientSocket = serverSocket.accept();
 
+	        System.out.println(Ansi.Yellow.colorize("CONNECTED TO" + clientSocket.getInetAddress()));
             ServerWorker serverWorker = new ServerWorker(clientSocket);
             workers.add(serverWorker);
 

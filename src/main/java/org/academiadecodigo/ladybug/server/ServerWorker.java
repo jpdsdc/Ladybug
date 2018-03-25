@@ -3,6 +3,7 @@ package org.academiadecodigo.ladybug.server;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.Scanner;
 
 public class ServerWorker implements Runnable {
 
@@ -10,6 +11,7 @@ public class ServerWorker implements Runnable {
     private final BufferedReader in;
     private  final PrintWriter out;
     private String origClient;
+    private Scanner scanner;
 
     public ServerWorker(Socket clientSocket)
             throws IOException {
@@ -20,10 +22,19 @@ public class ServerWorker implements Runnable {
         out = new PrintWriter(new OutputStreamWriter(clientSocket.getOutputStream()), true);
     }
 
-    public void send(String origClient, String message) {
-        out.write(origClient + ": " + message);
+    public void receive(String origClient, String message) {
+        out.write(origClient + ": " + message + "\n");
         out.flush();
     }
+
+    public void send(){
+    	String message = "";
+    	scanner = new Scanner(System.in);
+    	message = scanner.nextLine();
+	    out.write("Server: " + message + "\n");
+	    out.flush();
+    }
+
 
     @Override
     public void run() {
@@ -40,10 +51,11 @@ public class ServerWorker implements Runnable {
 				    continue;
 			    } else if (!line.isEmpty()){
 				    System.out.println(origClient + ": " + line);
-			    	send(origClient, line);
+			    	receive(origClient, line);
+			    	send();
 			    }
 		    } catch (IOException e) {
-			    e.printStackTrace();
+			    System.err.println(e.getMessage());
 		    }
 	    }
 
