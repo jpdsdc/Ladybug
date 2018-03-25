@@ -2,6 +2,7 @@ package org.academiadecodigo.ladybug.client.view;
 
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
+import org.academiadecodigo.ladybug.utils.Messages;
 
 public class MainMenuView extends AbstractView {
 
@@ -10,6 +11,8 @@ public class MainMenuView extends AbstractView {
 
     public MainMenuView(Prompt prompt) {
         super(prompt);
+        System.out.println(Messages.WELCOME);
+        System.out.println(Messages.LADYBUG);
         menuOptions = new String[]{"Select a day", "Select a event genre", "Exit"};
     }
 
