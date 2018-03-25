@@ -4,6 +4,7 @@ import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 import org.academiadecodigo.ladybug.client.controller.AuthController;
 import org.academiadecodigo.ladybug.client.controller.RegisterController;
+import org.academiadecodigo.ladybug.utils.Messages;
 
 public class FirstView extends AbstractView {
 
@@ -19,7 +20,7 @@ public class FirstView extends AbstractView {
     @Override
     public void show() {
         MenuInputScanner scanner = new MenuInputScanner(firstMenuOptions);
-        scanner.setMessage("Choose one option: ");
+        scanner.setMessage(Messages.INITIALMESSAGE + "");
 
         answerIndex = prompt.getUserInput(scanner);
     }

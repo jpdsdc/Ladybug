@@ -1,7 +1,6 @@
 package org.academiadecodigo.ladybug.client.persistance;
 
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -10,10 +9,11 @@ public class ConnectionManager {
     private Connection connection = null;
 
     public Connection getConnection(){
-        String dbURL = "jdbc:mysql://localhost:3306/ladybug?user=root&password=root&useUnicode=true&characterEncoding=UTF-8";
+        String dbURL = "jdbc:mysql://192.168.0.207:3306/ladybug";
+
         try {
             if(connection == null){
-               connection = DriverManager.getConnection(dbURL);
+               connection = DriverManager.getConnection(dbURL, "root", "root");
             }
         } catch (SQLException e) {
             System.err.println("Could not connect, cause: " + e.getMessage());

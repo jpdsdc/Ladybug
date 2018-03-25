@@ -5,6 +5,8 @@ import org.academiadecodigo.bootcamp.scanners.string.PasswordInputScanner;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 import org.academiadecodigo.ladybug.client.controller.AuthController;
 import org.academiadecodigo.ladybug.client.controller.MainMenuController;
+import org.academiadecodigo.ladybug.utils.Ansi;
+import org.academiadecodigo.ladybug.utils.Messages;
 
 public class LoginView extends AbstractView {
 
@@ -21,19 +23,19 @@ public class LoginView extends AbstractView {
         StringInputScanner usernameScanner = new StringInputScanner();
         PasswordInputScanner passwordScanner = new PasswordInputScanner();
 
-        usernameScanner.setMessage("What's your username? ");
-        passwordScanner.setMessage("What's your password? ");
+        usernameScanner.setMessage(Messages.ENTERUSERNAME + "");
+        passwordScanner.setMessage(Messages.ENTERPASSWORD + "");
 
         String username = prompt.getUserInput(usernameScanner);
         String password = prompt.getUserInput(passwordScanner);
 
         if(authController.login(username, password)){
-            System.out.println("Welcome, " + username + "!!!");
+            System.out.println(Ansi.Red.colorize(Ansi.HighIntensity.colorize("Welcome, " + username + ".")));
             mainMenuController.init();
             return;
         }
 
-        System.err.println("\nUser don't exists, Try again!");
+        System.out.println(Messages.CANTLOGIN);
         show();
     }
 

@@ -5,6 +5,8 @@ import org.academiadecodigo.bootcamp.scanners.string.PasswordInputScanner;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 import org.academiadecodigo.ladybug.client.controller.MainMenuController;
 import org.academiadecodigo.ladybug.client.controller.RegisterController;
+import org.academiadecodigo.ladybug.utils.Ansi;
+import org.academiadecodigo.ladybug.utils.Messages;
 
 public class RegisterView extends AbstractView {
 
@@ -19,17 +21,17 @@ public class RegisterView extends AbstractView {
     public void show() {
 
         StringInputScanner usernameScanner = new StringInputScanner();
-        usernameScanner.setMessage("Choose your username? ");
+        usernameScanner.setMessage(Messages.CHOOSEUSERNAME + "");
 
         PasswordInputScanner passwordScanner = new PasswordInputScanner();
-        passwordScanner.setMessage("Choose your password? ");
+        passwordScanner.setMessage(Messages.CHOOSEPASSWORD + "");
 
         String username = prompt.getUserInput(usernameScanner);
         String password = prompt.getUserInput(passwordScanner);
 
 
         if(registerController.register(username, password) == null){
-            System.err.println("Unable to register, try again.");
+            System.out.println(Messages.CANTREGISTER);
             show();
             return;
         }
