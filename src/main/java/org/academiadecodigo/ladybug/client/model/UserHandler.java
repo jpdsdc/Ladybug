@@ -35,10 +35,10 @@ public class UserHandler {
 			try {
 				out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 				message = answer();
-				System.out.println(message);
 				out.write(message);
 				out.newLine();
 				out.flush();
+				System.out.println(message);
 
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -47,15 +47,6 @@ public class UserHandler {
 
 			if (message == null) {
 				break;
-			}
-
-			try {
-				out.write(message);
-				out.newLine();
-				out.flush();
-			} catch (IOException e) {
-				e.printStackTrace();
-
 			}
 		}
 	}

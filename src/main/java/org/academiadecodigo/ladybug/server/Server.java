@@ -1,5 +1,7 @@
 package org.academiadecodigo.ladybug.server;
 
+import org.academiadecodigo.bootcamp.Prompt;
+import org.academiadecodigo.ladybug.client.menu.MainMenu;
 import org.academiadecodigo.ladybug.utils.Ansi;
 
 import java.io.IOException;
