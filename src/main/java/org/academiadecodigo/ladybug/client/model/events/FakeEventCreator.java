@@ -10,6 +10,11 @@ public class FakeEventCreator {
     private Event tombRaiderPT2303;
     private Event tombRaiderLX2403;
     private Event tombRaiderPT2403;
+    private Event theSwanLakeLX2503;
+    private Event theSwanLakePT2903;
+    private Event arcticMonkeysLX2703;
+    private Event arcticMonkeysPT2803;
+    private Event theStrokesLX2903;
 
 
     private String[] getAvengersSessions() {
@@ -28,10 +33,43 @@ public class FakeEventCreator {
         return tombRaiderSessions;
     }
 
+    private String[] getTheSwanLakeSessions(){
+        String[] theSwanLakeSessions = new String[1];
+        theSwanLakeSessions[0] = "21h30";
+        return theSwanLakeSessions;
+    }
+
+    private String[] getArcticMonkeysPTSessions(){
+        String[] arcticMonkeysPTSessions = new String[1];
+        arcticMonkeysPTSessions[0] = "19h00";
+        return arcticMonkeysPTSessions;
+    }
+
+    private String[] getArcticMonkeysLXSessions(){
+        String[] arcticMonkeysLXSessions = new String[1];
+        arcticMonkeysLXSessions[0] = "21h00";
+        return arcticMonkeysLXSessions;
+    }
+
+    private String[] getTheStrokesSessions(){
+        String[] theStrokesSessions = new String[1];
+        theStrokesSessions[0] = "17h30";
+        return theStrokesSessions;
+    }
+
 
 
 
     public void createEvents() {
+
+        theSwanLakeLX2503 = new Event(EventType.THEATRE, "The Swan Lake", "The best ballet thing in the world", Location.LISBOA, 25, 03, getTheSwanLakeSessions(), 33.89);
+        theSwanLakePT2903 = new Event(EventType.THEATRE, "The Swan Lake", "The best ballet thing in the world", Location.PORTO, 29, 03, getTheSwanLakeSessions(), 33.89);
+
+        arcticMonkeysLX2703 = new Event(EventType.MUSIC, "Arctic Monkeys", "No description could ever mdo them justice!", Location.LISBOA, 27, 03, getArcticMonkeysLXSessions(), 62.29);
+        arcticMonkeysPT2803 = new Event(EventType.MUSIC, "Arctic Monkeys", "No description could ever mdo them justice!", Location.PORTO, 28, 03, getArcticMonkeysPTSessions(), 62.29);
+
+        theStrokesLX2903 = new Event(EventType.MUSIC, "The Strokes", "Another fucking description", Location.LISBOA, 29, 03, getTheStrokesSessions(), 48.54);
+
 
         // Avengers Infinity War LISBOA - 22.03
         avengersInfinityWarLX2203 = new Event(EventType.MOVIE, "Avengers: Infinity Wars", "The Avengers " +
@@ -95,6 +133,42 @@ public class FakeEventCreator {
 
     public Event getAvengersInfinityWarPT2203() {
         return avengersInfinityWarPT2203;
+    }
+
+    public Event getTombRaiderLX2303() {
+        return tombRaiderLX2303;
+    }
+
+    public Event getTombRaiderPT2303() {
+        return tombRaiderPT2303;
+    }
+
+    public Event getTombRaiderLX2403() {
+        return tombRaiderLX2403;
+    }
+
+    public Event getTombRaiderPT2403() {
+        return tombRaiderPT2403;
+    }
+
+    public Event getTheSwanLakeLX2503() {
+        return theSwanLakeLX2503;
+    }
+
+    public Event getTheSwanLakePT2903() {
+        return theSwanLakePT2903;
+    }
+
+    public Event getArcticMonkeysLX2703() {
+        return arcticMonkeysLX2703;
+    }
+
+    public Event getArcticMonkeysPT2803() {
+        return arcticMonkeysPT2803;
+    }
+
+    public Event getTheStrokesLX2903() {
+        return theStrokesLX2903;
     }
 
     public static void main(String[] args) {
