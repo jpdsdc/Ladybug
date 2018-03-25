@@ -3,47 +3,40 @@ package org.academiadecodigo.ladybug.client.model;
 import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
+
 public class UserHandler {
+
     private Socket socket;
     private BufferedReader in;
-    private BufferedWriter out;
+    private PrintWriter out;
     private static final String SERVER = "localhost";
     private static final int PORT = 8080;
+
     public void init(String server, int port) {
+        try {
+            socket = new Socket(server, port);
+            out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         while (true) {
-            try {
-                socket = new Socket(server, port);
-                System.out.println("Connected: " + socket);
-                Thread thread = new Thread(new ClientWorker());
-                makeRequest();
-                thread.start();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            System.out.println("Connected: " + socket);
+            Thread thread = new Thread(new ClientWorker());
+            thread.start();
         }
     }
-    private void makeRequest() {
-        while (!socket.isClosed()) {
-            String message = null;
-            try {
-                out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-                message = answer();
-                out.write(message);
-                out.newLine();
-                out.flush();
-                System.out.println(message);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            if (message == null) {
-                break;
-            }
-        }
+
+    public void send(String message) {
+        out.write(message);
     }
+
     private String answer() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
+
     private class ClientWorker implements Runnable {
         @Override
         public void run() {

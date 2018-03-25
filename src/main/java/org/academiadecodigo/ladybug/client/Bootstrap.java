@@ -50,13 +50,9 @@ public class Bootstrap {
 
         //Client
         mainMenuService.setSelectDayView(selectDayView);
-        firstController.init();
+        mainMenuService.setUserHandler(userHandler);
 
         userHandler.init("localhost", 8080);
-        //Setup Services
-    }
-
-    public UserHandler getUserHandler() {
-        return userHandler;
+        firstController.init();
     }
 }

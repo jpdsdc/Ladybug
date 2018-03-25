@@ -10,11 +10,10 @@ public class ConnectionManager {
     private Connection connection = null;
 
     public Connection getConnection(){
-        String dbURL = "jdbc:mysql://127.0.0.1:3306/ladybug";
-
+        String dbURL = "jdbc:mysql://localhost:3306/ladybug?user=root&password=root&useUnicode=true&characterEncoding=UTF-8";
         try {
             if(connection == null){
-               connection = DriverManager.getConnection(dbURL, "root", "cata69506557");
+               connection = DriverManager.getConnection(dbURL);
             }
         } catch (SQLException e) {
             System.err.println("Could not connect, cause: " + e.getMessage());
