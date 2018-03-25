@@ -31,7 +31,7 @@ public class RegisterView extends AbstractView {
 
 
         if(registerController.register(username, password) == null){
-            System.err.println(Messages.CANTREGISTER);
+            System.out.println(Messages.CANTREGISTER);
             show();
             return;
         }

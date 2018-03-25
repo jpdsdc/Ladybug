@@ -35,7 +35,7 @@ public class LoginView extends AbstractView {
             return;
         }
 
-        System.err.println(Messages.CANTLOGIN);
+        System.out.println(Messages.CANTLOGIN);
         show();
     }
 
