@@ -2,6 +2,7 @@ package org.academiadecodigo.ladybug.client.view;
 
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
+import org.academiadecodigo.ladybug.utils.Messages;
 
 public class SelectDayView extends AbstractView{
 
@@ -17,7 +18,7 @@ public class SelectDayView extends AbstractView{
     @Override
     public void show() {
         MenuInputScanner menuInputScanner = new MenuInputScanner(options);
-        menuInputScanner.setMessage("Select a day: ");
+        menuInputScanner.setMessage(Messages.SELECTDAY + "");
 
         selected = prompt.getUserInput(menuInputScanner);
     }
