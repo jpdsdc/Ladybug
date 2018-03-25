@@ -8,7 +8,6 @@ import org.academiadecodigo.ladybug.client.controller.RegisterController;
 import org.academiadecodigo.ladybug.client.model.UserHandler;
 import org.academiadecodigo.ladybug.client.service.AuthService;
 import org.academiadecodigo.ladybug.client.service.JdbcAuthService;
-import org.academiadecodigo.ladybug.client.service.SimpleAuthService;
 import org.academiadecodigo.ladybug.client.service.view.MainMenuService;
 import org.academiadecodigo.ladybug.client.service.view.MainMenuServiceImpl;
 import org.academiadecodigo.ladybug.client.view.*;
@@ -50,13 +49,9 @@ public class Bootstrap {
 
         //Client
         mainMenuService.setSelectDayView(selectDayView);
+        mainMenuService.setUserHandler(userHandler);
+
         firstController.init();
-
         userHandler.init("localhost", 8080);
-        //Setup Services
-    }
-
-    public UserHandler getUserHandler() {
-        return userHandler;
     }
 }
