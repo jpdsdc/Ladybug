@@ -1,29 +1,49 @@
 package org.academiadecodigo.ladybug.server;
 
 import java.io.*;
+import java.net.InetAddress;
 import java.net.Socket;
 
 public class ServerWorker implements Runnable {
 
-    private Socket clientSocket;
-
-    private BufferedReader in;
-    private PrintWriter out;
+    private final Socket clientSocket;
+    private final BufferedReader in;
+    private  final PrintWriter out;
+    private InetAddress origClient;
 
     public ServerWorker(Socket clientSocket)
             throws IOException {
         this.clientSocket = clientSocket;
+        this.origClient = clientSocket.getLocalAddress();
 
         in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         out = new PrintWriter(new OutputStreamWriter(clientSocket.getOutputStream()), true);
     }
 
-    public void send(String origClient, String message) {
+    public void send(InetAddress origClient, String message) {
         out.write(origClient + ": " + message);
     }
 
     @Override
     public void run() {
+	    System.out.println("Started: " + Thread.currentThread().getName());
+
+	    while (!clientSocket.isClosed()){
+		    try {
+			    String line = in.readLine();
+
+			    if (line == null){
+				    System.out.println("User left. Closing connection...");
+				    in.close();
+				    clientSocket.close();
+				    continue;
+			    } else if (!line.isEmpty()){
+			    	send(origClient, line);
+			    }
+		    } catch (IOException e) {
+			    e.printStackTrace();
+		    }
+	    }
 
     }
 }
