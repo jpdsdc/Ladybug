@@ -16,6 +16,7 @@ public class SelectDayController extends AbstractController{
         view.show();
 
         SelectDayView selectDayView = (SelectDayView) view;
+
     }
 
     public void setUserHandler(UserHandler userHandler) {
