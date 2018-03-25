@@ -21,6 +21,10 @@ public class UserHandler {
             e.printStackTrace();
         }
 
+        if(socket == null){
+            return;
+        }
+
         while (true) {
             System.out.println("Connected: " + socket);
             Thread thread = new Thread(new ClientWorker());
@@ -40,10 +44,15 @@ public class UserHandler {
     private class ClientWorker implements Runnable {
         @Override
         public void run() {
-            while (!socket.isClosed()) {
+            while (true) {
                 try {
                     in = new BufferedReader(new InputStreamReader(System.in));
                     String message = in.readLine();
+
+                    if(message == null){
+                        return;
+                    }
+
                     System.out.println(message);
                     init(SERVER, PORT);
                 } catch (IOException e) {
