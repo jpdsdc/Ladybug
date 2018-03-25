@@ -3,14 +3,14 @@ package org.academiadecodigo.ladybug.client.view;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 
-public class AfterLoginView extends AbstractView {
+public class MainMenuView extends AbstractView {
 
     private String[] menuOptions;
     private int answerIndex;
 
-    public AfterLoginView(Prompt prompt) {
+    public MainMenuView(Prompt prompt) {
         super(prompt);
-        menuOptions = new String[]{"Day", "Type Event", "Return"};
+        menuOptions = new String[]{"Select a day", "Select a event genre", "Exit"};
     }
 
     @Override
