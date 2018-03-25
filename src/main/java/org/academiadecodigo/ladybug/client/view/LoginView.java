@@ -19,7 +19,6 @@ public class LoginView extends AbstractView {
 
     @Override
     public void show() {
-
         StringInputScanner usernameScanner = new StringInputScanner();
         PasswordInputScanner passwordScanner = new PasswordInputScanner();
 
@@ -29,14 +28,14 @@ public class LoginView extends AbstractView {
         String username = prompt.getUserInput(usernameScanner);
         String password = prompt.getUserInput(passwordScanner);
 
-        if(authController.login(username, password)){
-            System.out.println(Ansi.Red.colorize(Ansi.HighIntensity.colorize("Welcome, " + username + ".")));
-            mainMenuController.init();
+        if(!authController.login(username, password)){
+            System.out.println(Messages.CANTLOGIN);
+            show();
             return;
         }
 
-        System.out.println(Messages.CANTLOGIN);
-        show();
+        System.out.println(Ansi.Red.colorize(Ansi.HighIntensity.colorize("Welcome, " + username + ".")));
+        mainMenuController.init();
     }
 
     public void setAuthController(AuthController authController) {
