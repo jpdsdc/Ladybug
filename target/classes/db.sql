@@ -4,7 +4,6 @@ CREATE TABLE IF NOT EXISTS users(
   id INTEGER AUTO_INCREMENT,
   username VARCHAR(16) NOT NULL UNIQUE,
   password VARCHAR(50) NOT NULL,
-  created_at DATE DEFAULT curdate(),
   PRIMARY KEY(id)
 );
 

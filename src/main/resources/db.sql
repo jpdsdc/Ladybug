@@ -8,3 +8,7 @@ CREATE TABLE IF NOT EXISTS users(
 );
 
 -- Populate with data
+INSERT INTO users(username, password) VALUES ("tommy", "123");
+INSERT INTO users(username, password) VALUES ("jcosta", "123");
+INSERT INTO users(username, password) VALUES ("ccanto", "123");
+INSERT INTO users(username, password) VALUES ("ricardo", "123");

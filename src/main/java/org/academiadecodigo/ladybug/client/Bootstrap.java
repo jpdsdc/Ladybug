@@ -11,10 +11,7 @@ import org.academiadecodigo.ladybug.client.service.JdbcAuthService;
 import org.academiadecodigo.ladybug.client.service.SimpleAuthService;
 import org.academiadecodigo.ladybug.client.service.view.MainMenuService;
 import org.academiadecodigo.ladybug.client.service.view.MainMenuServiceImpl;
-import org.academiadecodigo.ladybug.client.view.FirstView;
-import org.academiadecodigo.ladybug.client.view.LoginView;
-import org.academiadecodigo.ladybug.client.view.MainMenuView;
-import org.academiadecodigo.ladybug.client.view.RegisterView;
+import org.academiadecodigo.ladybug.client.view.*;
 
 public class Bootstrap {
 
@@ -24,7 +21,9 @@ public class Bootstrap {
         FirstView firstView = new FirstView(prompt);
         RegisterView registerView = new RegisterView(prompt);
         LoginView loginView = new LoginView(prompt);
+
         MainMenuView mainMenuView = new MainMenuView(prompt);
+        SelectDayView selectDayView = new SelectDayView(prompt);
 
         //Create services
         MainMenuService mainMenuService = new MainMenuServiceImpl(mainMenuView);
@@ -48,8 +47,11 @@ public class Bootstrap {
         firstController.setView(firstView);
 
         //Client
+        mainMenuService.setSelectDayView(selectDayView);
+	    firstController.init();
+
         UserHandler userHandler = new UserHandler();
         userHandler.init("localhost", 8080);
-        firstController.init();
+        //Setup Services
     }
 }
