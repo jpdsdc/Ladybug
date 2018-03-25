@@ -15,6 +15,8 @@ import org.academiadecodigo.ladybug.client.view.*;
 
 public class Bootstrap {
 
+    private UserHandler userHandler = new UserHandler();
+
     public void wiredObjects() {
         Prompt prompt = new Prompt(System.in, System.out);
         AuthService authService = new JdbcAuthService();
@@ -48,10 +50,13 @@ public class Bootstrap {
 
         //Client
         mainMenuService.setSelectDayView(selectDayView);
-	    firstController.init();
+        firstController.init();
 
-        UserHandler userHandler = new UserHandler();
         userHandler.init("localhost", 8080);
         //Setup Services
+    }
+
+    public UserHandler getUserHandler() {
+        return userHandler;
     }
 }
