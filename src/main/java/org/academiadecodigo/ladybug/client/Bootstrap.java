@@ -52,7 +52,8 @@ public class Bootstrap {
         mainMenuService.setSelectDayView(selectDayView);
         mainMenuService.setUserHandler(userHandler);
 
-        userHandler.init("localhost", 8080);
         firstController.init();
+        userHandler.init("localhost", 8080);
+
     }
 }

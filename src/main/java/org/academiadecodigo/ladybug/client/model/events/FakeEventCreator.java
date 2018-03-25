@@ -135,6 +135,42 @@ public class FakeEventCreator {
         return avengersInfinityWarPT2203;
     }
 
+    public Event getTombRaiderLX2303() {
+        return tombRaiderLX2303;
+    }
+
+    public Event getTombRaiderPT2303() {
+        return tombRaiderPT2303;
+    }
+
+    public Event getTombRaiderLX2403() {
+        return tombRaiderLX2403;
+    }
+
+    public Event getTombRaiderPT2403() {
+        return tombRaiderPT2403;
+    }
+
+    public Event getTheSwanLakeLX2503() {
+        return theSwanLakeLX2503;
+    }
+
+    public Event getTheSwanLakePT2903() {
+        return theSwanLakePT2903;
+    }
+
+    public Event getArcticMonkeysLX2703() {
+        return arcticMonkeysLX2703;
+    }
+
+    public Event getArcticMonkeysPT2803() {
+        return arcticMonkeysPT2803;
+    }
+
+    public Event getTheStrokesLX2903() {
+        return theStrokesLX2903;
+    }
+
     public static void main(String[] args) {
 
         FakeEventCreator fEC = new FakeEventCreator();
