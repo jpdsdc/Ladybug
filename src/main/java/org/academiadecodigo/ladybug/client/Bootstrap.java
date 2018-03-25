@@ -5,8 +5,10 @@ import org.academiadecodigo.ladybug.client.controller.AuthController;
 import org.academiadecodigo.ladybug.client.controller.FirstController;
 import org.academiadecodigo.ladybug.client.controller.MainMenuController;
 import org.academiadecodigo.ladybug.client.controller.RegisterController;
+import org.academiadecodigo.ladybug.client.model.UserHandler;
 import org.academiadecodigo.ladybug.client.service.AuthService;
 import org.academiadecodigo.ladybug.client.service.JdbcAuthService;
+import org.academiadecodigo.ladybug.client.service.SimpleAuthService;
 import org.academiadecodigo.ladybug.client.service.view.MainMenuService;
 import org.academiadecodigo.ladybug.client.service.view.MainMenuServiceImpl;
 import org.academiadecodigo.ladybug.client.view.*;
@@ -15,8 +17,7 @@ public class Bootstrap {
 
     public void wiredObjects() {
         Prompt prompt = new Prompt(System.in, System.out);
-
-        //Create views
+        AuthService authService = new JdbcAuthService();
         FirstView firstView = new FirstView(prompt);
         RegisterView registerView = new RegisterView(prompt);
         LoginView loginView = new LoginView(prompt);
@@ -25,7 +26,6 @@ public class Bootstrap {
         SelectDayView selectDayView = new SelectDayView(prompt);
 
         //Create services
-        AuthService authService = new JdbcAuthService();
         MainMenuService mainMenuService = new MainMenuServiceImpl(mainMenuView);
 
         //Create controllers
@@ -46,8 +46,12 @@ public class Bootstrap {
         firstController.setRegisterController(registerController);
         firstController.setView(firstView);
 
-        //Setup Services
+        //Client
         mainMenuService.setSelectDayView(selectDayView);
-        firstController.init();
+	    firstController.init();
+
+        UserHandler userHandler = new UserHandler();
+        userHandler.init("localhost", 8080);
+        //Setup Services
     }
 }

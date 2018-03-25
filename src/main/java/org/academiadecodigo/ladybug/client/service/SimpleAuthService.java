@@ -10,7 +10,6 @@ public class SimpleAuthService implements AuthService {
     private Connection connection;
 
     public SimpleAuthService(){
-        connection = new ConnectionManager().getConnection();
     }
 
     @Override
