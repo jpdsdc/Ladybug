@@ -9,19 +9,20 @@ public class ServerWorker implements Runnable {
     private final Socket clientSocket;
     private final BufferedReader in;
     private  final PrintWriter out;
-    private InetAddress origClient;
+    private String origClient;
 
     public ServerWorker(Socket clientSocket)
             throws IOException {
         this.clientSocket = clientSocket;
-        this.origClient = clientSocket.getLocalAddress();
+        this.origClient = "Client: ";
 
         in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         out = new PrintWriter(new OutputStreamWriter(clientSocket.getOutputStream()), true);
     }
 
-    public void send(InetAddress origClient, String message) {
+    public void send(String origClient, String message) {
         out.write(origClient + ": " + message);
+        out.flush();
     }
 
     @Override
