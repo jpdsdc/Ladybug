@@ -8,7 +8,6 @@ import org.academiadecodigo.ladybug.client.controller.RegisterController;
 import org.academiadecodigo.ladybug.client.model.UserHandler;
 import org.academiadecodigo.ladybug.client.service.AuthService;
 import org.academiadecodigo.ladybug.client.service.JdbcAuthService;
-import org.academiadecodigo.ladybug.client.service.SimpleAuthService;
 import org.academiadecodigo.ladybug.client.service.view.MainMenuService;
 import org.academiadecodigo.ladybug.client.service.view.MainMenuServiceImpl;
 import org.academiadecodigo.ladybug.client.view.*;
@@ -19,7 +18,7 @@ public class Bootstrap {
 
     public void wiredObjects() {
         Prompt prompt = new Prompt(System.in, System.out);
-        AuthService authService = new JdbcAuthService();
+
         FirstView firstView = new FirstView(prompt);
         RegisterView registerView = new RegisterView(prompt);
         LoginView loginView = new LoginView(prompt);
@@ -28,6 +27,7 @@ public class Bootstrap {
         SelectDayView selectDayView = new SelectDayView(prompt);
 
         //Create services
+        AuthService authService = new JdbcAuthService();
         MainMenuService mainMenuService = new MainMenuServiceImpl(mainMenuView);
 
         //Create controllers
