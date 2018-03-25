@@ -5,12 +5,12 @@ import java.net.Socket;
 
 public class UserHandler implements Runnable {
 
+    private static final String SERVER = "localhost";
+    private static final int PORT = 3306;
 
-	private Socket socket;
-	private BufferedReader in;
-	private BufferedWriter out;
-	private static final String SERVER = "localhost";
-	private static final int PORT = 3306;
+    private Socket socket;
+    private BufferedReader in;
+    private BufferedWriter out;
 
 	private void init(String server, int port) {
 		while (true) {
@@ -31,7 +31,6 @@ public class UserHandler implements Runnable {
 
 		setupSocketStreams();
 		makeRequest();
-
 	}
 
 	private void makeRequest() {
