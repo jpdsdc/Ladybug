@@ -2,23 +2,20 @@ package org.academiadecodigo.ladybug.client.view;
 
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
-import org.academiadecodigo.ladybug.client.controller.AuthController;
-import org.academiadecodigo.ladybug.client.controller.RegisterController;
 
-public class FirstView extends AbstractView {
+public class MainMenuView extends AbstractView {
 
-    private String[] firstMenuOptions;
+    private String[] menuOptions;
     private int answerIndex;
 
-    public FirstView(Prompt prompt) {
+    public MainMenuView(Prompt prompt) {
         super(prompt);
-
-        firstMenuOptions = new String[]{"Login", "Register", "Exit"};
+        menuOptions = new String[]{"Select a day", "Select a event genre", "Exit"};
     }
 
     @Override
     public void show() {
-        MenuInputScanner scanner = new MenuInputScanner(firstMenuOptions);
+        MenuInputScanner scanner = new MenuInputScanner(menuOptions);
         scanner.setMessage("Choose one option: ");
 
         answerIndex = prompt.getUserInput(scanner);
