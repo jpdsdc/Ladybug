@@ -39,6 +39,7 @@ public class ServerWorker implements Runnable {
 				    clientSocket.close();
 				    continue;
 			    } else if (!line.isEmpty()){
+				    System.out.println(origClient + ": " + line);
 			    	send(origClient, line);
 			    }
 		    } catch (IOException e) {
