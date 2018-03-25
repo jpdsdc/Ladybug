@@ -35,5 +35,7 @@ public class Bootstrap {
         firstController.setAuthController(authController);
         firstController.setRegisterController(registerController);
         firstController.setView(firstView);
+
+        firstController.init();
     }
 }

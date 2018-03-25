@@ -25,7 +25,14 @@ public class RegisterView extends AbstractView {
         String username = prompt.getUserInput(usernameScanner);
         String password = prompt.getUserInput(passwordScanner);
 
-        registerController.register(username, password);
+
+        if(registerController.register(username, password) == null){
+            System.err.println("Unable to register, try again.");
+            show();
+            return;
+        }
+
+        System.out.println("Welcome, " + username + "!!");
     }
 
     public void setRegisterController(RegisterController registerController) {

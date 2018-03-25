@@ -17,20 +17,20 @@ public class LoginView extends AbstractView {
     public void show() {
 
         StringInputScanner usernameScanner = new StringInputScanner();
-        usernameScanner.setMessage("What's your username? ");
-
         PasswordInputScanner passwordScanner = new PasswordInputScanner();
+
+        usernameScanner.setMessage("What's your username? ");
         passwordScanner.setMessage("What's your password? ");
 
         String username = prompt.getUserInput(usernameScanner);
         String password = prompt.getUserInput(passwordScanner);
 
         if(authController.login(username, password)){
-            System.out.println("Welcome.");
+            System.out.println("Welcome, " + username + "!!!");
             return;
         }
 
-        System.out.println("Ups!? Try again.");
+        System.err.println("\nUser don't exists, Try again!");
         show();
     }
 

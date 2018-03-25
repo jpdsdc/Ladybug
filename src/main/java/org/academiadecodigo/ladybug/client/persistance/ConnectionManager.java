@@ -12,9 +12,11 @@ public class ConnectionManager {
         String dbURL = "jdbc:mysql://localhost:3306/ladybug";
 
         try {
-            return connection == null ? DriverManager.getConnection(dbURL, "root", "root") : connection;
+            if(connection == null){
+                connection = DriverManager.getConnection(dbURL, "root", "root");
+            }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Could not connect, cause: " + e.getMessage());
         }
 
         return connection;
@@ -24,7 +26,7 @@ public class ConnectionManager {
         try {
             connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Could not close connection, cause: " + e.getMessage());
         }
     }
 }
