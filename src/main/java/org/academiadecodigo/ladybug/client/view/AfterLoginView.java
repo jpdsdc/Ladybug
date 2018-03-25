@@ -10,7 +10,7 @@ public class AfterLoginView extends AbstractView {
 
     public AfterLoginView(Prompt prompt) {
         super(prompt);
-        menuOptions = new String[]{"Day", "Type Event", "Return"};
+        menuOptions = new String[]{"Day", "Event Genre", "Return"};
     }
 
     @Override
