@@ -1,18 +1,17 @@
 package org.academiadecodigo.ladybug.client.controller;
 
-import org.academiadecodigo.ladybug.client.view.AfterLoginView;
+import org.academiadecodigo.ladybug.client.service.view.MainMenuService;
 
-public class AfterLoginController implements Controller{
+public class MainMenuController implements Controller{
 
-    private AfterLoginView afterLoginView;
+    private MainMenuService mainMenuService;
 
-    public AfterLoginController(AfterLoginView loginView) {
-        this.afterLoginView = loginView;
+    public MainMenuController(MainMenuService menuService) {
+        this.mainMenuService = menuService;
     }
 
     @Override
     public void init() {
-        afterLoginView.show();
-
+        mainMenuService.execute();
     }
 }

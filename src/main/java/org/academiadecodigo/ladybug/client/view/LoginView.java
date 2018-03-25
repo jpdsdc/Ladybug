@@ -4,10 +4,12 @@ import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.string.PasswordInputScanner;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 import org.academiadecodigo.ladybug.client.controller.AuthController;
+import org.academiadecodigo.ladybug.client.controller.MainMenuController;
 
 public class LoginView extends AbstractView {
 
     private AuthController authController;
+    private MainMenuController mainMenuController;
 
     public LoginView(Prompt prompt) {
         super(prompt);
@@ -27,6 +29,7 @@ public class LoginView extends AbstractView {
 
         if(authController.login(username, password)){
             System.out.println("Welcome, " + username + "!!!");
+            mainMenuController.init();
             return;
         }
 
@@ -36,5 +39,9 @@ public class LoginView extends AbstractView {
 
     public void setAuthController(AuthController authController) {
         this.authController = authController;
+    }
+
+    public void setMainMenuController(MainMenuController mainMenuController) {
+        this.mainMenuController = mainMenuController;
     }
 }
