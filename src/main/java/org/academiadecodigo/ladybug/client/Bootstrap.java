@@ -18,7 +18,7 @@ public class Bootstrap {
 
     public void wiredObjects() {
         Prompt prompt = new Prompt(System.in, System.out);
-        AuthService authService = new JdbcAuthService();
+
         FirstView firstView = new FirstView(prompt);
         RegisterView registerView = new RegisterView(prompt);
         LoginView loginView = new LoginView(prompt);
@@ -27,6 +27,7 @@ public class Bootstrap {
         SelectDayView selectDayView = new SelectDayView(prompt);
 
         //Create services
+        AuthService authService = new JdbcAuthService();
         MainMenuService mainMenuService = new MainMenuServiceImpl(mainMenuView);
 
         //Create controllers
@@ -53,5 +54,9 @@ public class Bootstrap {
 
         firstController.init();
         userHandler.init("localhost", 8080);
+<<<<<<< HEAD
+
+=======
+>>>>>>> 6d95abcd541aae1774f6651618353052fce71bad
     }
 }
