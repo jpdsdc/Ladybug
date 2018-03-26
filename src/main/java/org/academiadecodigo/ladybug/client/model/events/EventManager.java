@@ -16,4 +16,9 @@ public class EventManager {
     }
 
     public Event getEvent(Event event){ return null; }
+
+    // returns events based on the day of the week they're taking place
+    public void getEventByWeekday(int weekdayOrdinal){
+
+    }
 }
