@@ -1,5 +1,7 @@
 package org.academiadecodigo.ladybug.server;
 
+import org.academiadecodigo.ladybug.client.Bootstrap;
+
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -22,12 +24,12 @@ public class ServerWorker implements Runnable {
         out = new PrintWriter(new OutputStreamWriter(clientSocket.getOutputStream()), true);
     }
 
-    public void receive(String origClient, String message) {
-        out.write(origClient + ": " + message + "\n");
+    public void send(String message) {
+        out.write(message + "\n");
         out.flush();
     }
 
-    public void send(){
+    public void receive(){
     	String message = "";
     	scanner = new Scanner(System.in);
     	message = scanner.nextLine();
@@ -51,8 +53,6 @@ public class ServerWorker implements Runnable {
 				    continue;
 			    } else if (!line.isEmpty()){
 				    System.out.println(origClient + ": " + line);
-			    	receive(origClient, line);
-			    	send();
 			    }
 		    } catch (IOException e) {
 			    System.err.println(e.getMessage());

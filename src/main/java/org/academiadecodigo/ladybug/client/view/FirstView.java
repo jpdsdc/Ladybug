@@ -4,6 +4,7 @@ import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 import org.academiadecodigo.ladybug.client.controller.AuthController;
 import org.academiadecodigo.ladybug.client.controller.RegisterController;
+import org.academiadecodigo.ladybug.server.Server;
 import org.academiadecodigo.ladybug.utils.Messages;
 
 public class FirstView extends AbstractView {
@@ -15,6 +16,7 @@ public class FirstView extends AbstractView {
         super(prompt);
 
         firstMenuOptions = new String[]{"Login", "Register", "Exit"};
+
     }
 
     @Override

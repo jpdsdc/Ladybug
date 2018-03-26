@@ -13,8 +13,7 @@ public class EventGenreController extends AbstractController{
 	@Override
 	public void init() {
 		view.show();
-
-		GenreView genreView = (GenreView) view;
 	}
+
 
 }

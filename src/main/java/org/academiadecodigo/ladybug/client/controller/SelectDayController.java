@@ -12,8 +12,6 @@ public class SelectDayController extends AbstractController{
     @Override
     public void init() {
         view.show();
-
-        SelectDayView selectDayView = (SelectDayView) view;
     }
 
 }
