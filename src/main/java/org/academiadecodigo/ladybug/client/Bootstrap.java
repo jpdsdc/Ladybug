@@ -19,7 +19,7 @@ public class Bootstrap {
 
     public void wiredObjects() {
         Prompt prompt = new Prompt(System.in, System.out);
-        AuthService authService = new JdbcAuthService();
+        AuthService authService = new SimpleAuthService();
         FirstView firstView = new FirstView(prompt);
         RegisterView registerView = new RegisterView(prompt);
         LoginView loginView = new LoginView(prompt);
