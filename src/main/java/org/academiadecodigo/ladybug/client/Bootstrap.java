@@ -1,10 +1,7 @@
 package org.academiadecodigo.ladybug.client;
 
 import org.academiadecodigo.bootcamp.Prompt;
-import org.academiadecodigo.ladybug.client.controller.AuthController;
-import org.academiadecodigo.ladybug.client.controller.FirstController;
-import org.academiadecodigo.ladybug.client.controller.MainMenuController;
-import org.academiadecodigo.ladybug.client.controller.RegisterController;
+import org.academiadecodigo.ladybug.client.controller.*;
 import org.academiadecodigo.ladybug.client.model.UserHandler;
 import org.academiadecodigo.ladybug.client.service.AuthService;
 import org.academiadecodigo.ladybug.client.service.JdbcAuthService;
@@ -22,10 +19,9 @@ public class Bootstrap {
         FirstView firstView = new FirstView(prompt);
         RegisterView registerView = new RegisterView(prompt);
         LoginView loginView = new LoginView(prompt);
-
         MainMenuView mainMenuView = new MainMenuView(prompt);
         SelectDayView selectDayView = new SelectDayView(prompt);
-
+        GenreView genreView = new GenreView(prompt);
         //Create services
         AuthService authService = new JdbcAuthService();
         MainMenuService mainMenuService = new MainMenuServiceImpl(mainMenuView);
@@ -35,7 +31,7 @@ public class Bootstrap {
         RegisterController registerController = new RegisterController(registerView);
         FirstController firstController = new FirstController(firstView);
         MainMenuController mainMenuController = new MainMenuController(mainMenuService);
-
+        EventGenreController eventGenreController = new EventGenreController(genreView);
         //Setup views
         registerView.setRegisterController(registerController);
         registerView.setMainMenuController(mainMenuController);
@@ -51,12 +47,9 @@ public class Bootstrap {
         //Client
         mainMenuService.setSelectDayView(selectDayView);
         mainMenuService.setUserHandler(userHandler);
+        mainMenuService.setGenreView(genreView);
 
         firstController.init();
         userHandler.init("localhost", 8080);
-<<<<<<< HEAD
-
-=======
->>>>>>> 6d95abcd541aae1774f6651618353052fce71bad
     }
 }

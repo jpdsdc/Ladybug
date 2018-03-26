@@ -26,7 +26,8 @@ public enum Messages {
 	CHOOSEPASSWORD(Ansi.HighIntensity.colorize(Ansi.Blue.colorize("New password: "))),
 	CANTREGISTER(Ansi.HighIntensity.colorize(Ansi.Red.colorize("Unable to register, please try again! "))),
 	CANTLOGIN(Ansi.HighIntensity.colorize(Ansi.Red.colorize("Wrong username or password. Try again "))),
-	SELECTDAY(Ansi.HighIntensity.colorize(Ansi.Blue.colorize("Day: ")));
+	SELECTDAY(Ansi.HighIntensity.colorize(Ansi.Blue.colorize("Day: "))),
+	SELECTGENRE(Ansi.HighIntensity.colorize(Ansi.Blue.colorize("Genre: ")));
 
     String message;
 
