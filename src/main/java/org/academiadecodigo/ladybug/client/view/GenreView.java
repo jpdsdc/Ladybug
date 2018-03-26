@@ -8,11 +8,11 @@ import org.academiadecodigo.ladybug.utils.Messages;
 public class GenreView extends AbstractView{
 
 	private String[] options;
-	int selected;
+	private int selected;
 
 	public GenreView(Prompt prompt) {
 		super(prompt);
-		options = new String[]{EventType.MOVIE.toString(), EventType.MUSIC.toString(), EventType.THEATRE.toString()};
+		options = new String[]{"Movie", "Concert", "Theater"};
 	}
 
 	@Override
