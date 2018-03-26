@@ -2,7 +2,6 @@ package org.academiadecodigo.ladybug.client;
 
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.ladybug.client.controller.*;
-import org.academiadecodigo.ladybug.client.model.UserHandler;
 import org.academiadecodigo.ladybug.client.service.AuthService;
 import org.academiadecodigo.ladybug.client.service.JdbcAuthService;
 import org.academiadecodigo.ladybug.client.service.view.MainMenuService;
@@ -10,8 +9,6 @@ import org.academiadecodigo.ladybug.client.service.view.MainMenuServiceImpl;
 import org.academiadecodigo.ladybug.client.view.*;
 
 public class Bootstrap {
-
-    private UserHandler userHandler = new UserHandler();
 
     public void wiredObjects() {
         Prompt prompt = new Prompt(System.in, System.out);
@@ -47,10 +44,8 @@ public class Bootstrap {
 
         //Client
         mainMenuService.setSelectDayView(selectDayView);
-        mainMenuService.setUserHandler(userHandler);
         mainMenuService.setGenreView(genreView);
 
         firstController.init();
-        userHandler.init("localhost", 8080);
     }
 }

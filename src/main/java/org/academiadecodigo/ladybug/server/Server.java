@@ -26,7 +26,7 @@ public class Server {
     /**
      * Starts the server and starts accepting clients
      */
-    private void start() {
+    public void start() {
         try {
             serverSocket = new ServerSocket(PORT);
             System.out.println(Ansi.Green.colorize("STARTING CONNECTION...\n### CONNECTION ESTABLISHED ###"));
