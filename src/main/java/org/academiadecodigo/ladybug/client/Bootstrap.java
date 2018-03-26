@@ -37,6 +37,7 @@ public class Bootstrap {
         registerView.setMainMenuController(mainMenuController);
         loginView.setAuthController(authController);
         loginView.setMainMenuController(mainMenuController);
+        genreView.setSelectDayView(selectDayView);
 
         //Setup controllers
         registerController.setAuthService(authService);
