@@ -2,51 +2,86 @@ package org.academiadecodigo.ladybug.server;
 
 import org.academiadecodigo.ladybug.client.Bootstrap;
 import org.academiadecodigo.ladybug.client.view.FirstView;
+import org.academiadecodigo.ladybug.utils.Messages;
 
 import javax.sql.rowset.FilteredRowSet;
 import java.io.*;
 import java.net.Socket;
+import java.util.List;
 import java.util.Scanner;
 
 public class ServerWorker implements Runnable {
 
-    private final Socket clientSocket;
-    private final BufferedReader in;
-    private  final PrintWriter out;
-    private String origClient;
-    private Scanner scanner;
-    private Bootstrap bootstrap = new Bootstrap();
-    private FirstView firstView;
+	final private Server server;
+	final private String name;
+	final private Socket clientSocket;
+	final private BufferedReader in;
+	final private BufferedWriter out;
 
-    public ServerWorker(Socket clientSocket)
-            throws IOException {
-        this.clientSocket = clientSocket;
-        this.origClient = "Client: ";
+	private final List<ServerWorker> clientsList;
 
-        in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-        out = new PrintWriter(new OutputStreamWriter(clientSocket.getOutputStream()), true);
-    }
+	public ServerWorker(String name, Socket clientSocket, Server server) throws IOException {
 
-    @Override
-    public void run() {
-	    System.out.println("Started: " + Thread.currentThread().getName());
-	    firstView.setPrintWriter(out);
-	    while (!clientSocket.isClosed()){
-		    try {
-			    String line = in.readLine();
+		this.server = server;
+		this.name = name;
+		this.clientSocket = clientSocket;
 
-			    if (line == null){
-				    System.out.println("User left. Closing connection...");
-				    in.close();
-				    clientSocket.close();
-				    continue;
-			    } else if (!line.isEmpty()){
-				    System.out.println(origClient + ": " + line);
-			    }
-		    } catch (IOException e) {
-			    System.err.println(e.getMessage());
-		    }
-	    }
+		in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+		out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
 
-    }
+		clientsList = server.getWorkers();
+
+	}
+
+	@Override
+	public void run() {
+
+		System.out.println("Thread " + name + " started");
+
+		messageToUser(Messages.WELCOME + "");
+		messageToUser(Messages.LADYBUG + "");
+		int currentPlayerIndex = clientsList.indexOf(this);
+
+
+		// QUESTIONS LOOP
+		while (true) {
+
+
+			// Blocks waiting for client messages
+			String line = null;
+			try {
+				line = in.readLine();
+				System.out.println("Client " + name + " closed, exiting...");
+
+				in.close();
+				clientSocket.close();
+				continue;
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			if (line == null) {
+
+
+			} else if (!line.isEmpty()) {
+
+			}
+
+			System.exit(0);
+
+		}
+	}
+
+	public void messageToUser(String message) {
+
+		try {
+			out.write(message);
+			out.newLine();
+			out.flush();
+
+		} catch (IOException ex) {
+			System.out.println(name + " : " + ex.getMessage());
+		}
+
+	}
 }

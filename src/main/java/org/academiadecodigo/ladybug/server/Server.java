@@ -1,4 +1,5 @@
 package org.academiadecodigo.ladybug.server;
+import org.academiadecodigo.ladybug.client.model.User;
 import org.academiadecodigo.ladybug.utils.Ansi;
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -9,53 +10,72 @@ import java.util.List;
 
 public class Server {
 
-    private final int PORT = 6060;
-
-    private List<ServerWorker> workers;
-    private ServerSocket serverSocket;
+    private final static int PORT = 6060;
+    private final List<ServerWorker> workers = Collections.synchronizedList(new ArrayList<ServerWorker>());
 
     public static void main(String[] args) {
-        new Server();
-    }
 
-    public Server(){
-        workers = Collections.synchronizedList(new ArrayList<>());
-        start();
-    }
+        int port = PORT;
 
-    /**
-     * Starts the server and starts accepting clients
-     */
-    public void start() {
         try {
-            serverSocket = new ServerSocket(PORT);
-            System.out.println(Ansi.Green.colorize("STARTING CONNECTION...\n### CONNECTION ESTABLISHED ###"));
-            acceptingClients();
+
+            if (args.length > 0) {
+                port = Integer.parseInt(args[0]);
+            }
+
+            Server server = new Server();
+            server.start(port);
+
+        } catch (NumberFormatException ex) {
+            System.exit(1);
+
+        }
+    }
+
+    private void start(int port) {
+        int connectionCount = 0;
+
+        try {
+
+            // Bind to local port
+            System.out.println("Connecting to " + port + ", please wait  ...");
+            ServerSocket serverSocket = new ServerSocket(port);
+            System.out.println("Server started: " + serverSocket);
+
+            while (true) {
+
+                // Block waiting for client connections
+                Socket clientSocket = serverSocket.accept();
+
+                try {
+
+                    // Create a new Server Worker
+                    connectionCount++;
+                    String name = "Client: " + connectionCount;
+
+                    ServerWorker worker = new ServerWorker(name, clientSocket, this);
+
+                    workers.add(worker);
+
+                    // Serve the client connection with a new Thread
+                    Thread thread = new Thread(worker);
+                    thread.setName(name);
+                    thread.start();
+
+                } catch (IOException ex) {
+                    System.err.println(ex.getMessage());
+                }
+            }
+
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
     }
 
-    /**
-     * Wait for a client to be accepted by the server
-     * and add a server worker when the client joined
-     *
-     * @throws IOException exception in case the whole thing gets fucked
-     */
-    public void acceptingClients() throws IOException {
-        while (serverSocket.isBound()){
-            Socket clientSocket = serverSocket.accept();
 
-	        System.out.println(Ansi.Yellow.colorize("CONNECTED TO" + clientSocket.getInetAddress()));
-            ServerWorker serverWorker = new ServerWorker(clientSocket);
-            workers.add(serverWorker);
-
-            Thread thread = new Thread(serverWorker);
-            thread.start();
-            System.out.println(Thread.currentThread().getName());
-        }
-
-        serverSocket.close();
+    public List<ServerWorker> getWorkers() {
+        return workers;
     }
+
 }
 
