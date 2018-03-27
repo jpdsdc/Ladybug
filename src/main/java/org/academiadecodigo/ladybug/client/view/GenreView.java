@@ -2,14 +2,13 @@ package org.academiadecodigo.ladybug.client.view;
 
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
-import org.academiadecodigo.ladybug.client.model.events.EventType;
 import org.academiadecodigo.ladybug.utils.Messages;
 
 public class GenreView extends AbstractView {
 
 	private String[] options;
 	private int selected;
-	private SelectDayView selectDayView;
+	private SelectEventView selectEventView;
 
 	public GenreView(Prompt prompt) {
 		super(prompt);
@@ -24,14 +23,14 @@ public class GenreView extends AbstractView {
 
 		selected = prompt.getUserInput(menuInputScanner);
 
-		selectDayView.show();
+		selectEventView.show();
 	}
 
 	public String getSelected() {
 		return options[selected - 1];
 	}
 
-	public void setSelectDayView(SelectDayView selectDayView) {
-		this.selectDayView = selectDayView;
+	public void setSelectEventView(SelectEventView selectEventView) {
+		this.selectEventView = selectEventView;
 	}
 }

@@ -1,17 +1,18 @@
 package org.academiadecodigo.ladybug.client.service.view;
 
 import org.academiadecodigo.ladybug.client.controller.EventGenreController;
-import org.academiadecodigo.ladybug.client.controller.SelectDayController;
+import org.academiadecodigo.ladybug.client.controller.SelectEventController;
 import org.academiadecodigo.ladybug.client.model.UserHandler;
 import org.academiadecodigo.ladybug.client.view.GenreView;
 import org.academiadecodigo.ladybug.client.view.MainMenuView;
-import org.academiadecodigo.ladybug.client.view.SelectDayView;
+import org.academiadecodigo.ladybug.client.view.SelectEventView;
 
 public class MainMenuServiceImpl implements MainMenuService {
 
     private MainMenuView mainMenuView;
-    private SelectDayView selectDayView;
+    private SelectEventView selectEventView;
     private GenreView genreView;
+
     private UserHandler userHandler;
 
     public MainMenuServiceImpl(MainMenuView mainMenuView) {
@@ -24,9 +25,8 @@ public class MainMenuServiceImpl implements MainMenuService {
 
         switch (mainMenuView.getAnswerIndex()){
             case 1:
-                SelectDayController selectDayController = new SelectDayController(selectDayView);
-                selectDayController.setUserHandler(userHandler);
-                selectDayController.init();
+                SelectEventController selectEventController = new SelectEventController(selectEventView);
+                selectEventController.init();
                 break;
             case 2:
                 EventGenreController eventGenreController = new EventGenreController(genreView);
@@ -40,8 +40,8 @@ public class MainMenuServiceImpl implements MainMenuService {
     }
 
     @Override
-    public void setSelectDayView(SelectDayView selectDayView) {
-        this.selectDayView = selectDayView;
+    public void setSelectEventView(SelectEventView selectEventView) {
+        this.selectEventView = selectEventView;
     }
 
     @Override

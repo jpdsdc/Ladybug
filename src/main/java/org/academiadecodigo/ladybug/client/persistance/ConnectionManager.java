@@ -13,7 +13,7 @@ public class ConnectionManager {
 
         try {
             if(connection == null){
-               connection = DriverManager.getConnection(dbURL, "root", "cata69506557");
+               connection = DriverManager.getConnection(dbURL, "root", "root");
             }
         } catch (SQLException e) {
             System.err.println("Could not connect, cause: " + e.getMessage());

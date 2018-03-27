@@ -20,33 +20,37 @@ public class Bootstrap {
         RegisterView registerView = new RegisterView(prompt);
         LoginView loginView = new LoginView(prompt);
         MainMenuView mainMenuView = new MainMenuView(prompt);
-        SelectDayView selectDayView = new SelectDayView(prompt);
         GenreView genreView = new GenreView(prompt);
+
         //Create services
         AuthService authService = new JdbcAuthService();
         MainMenuService mainMenuService = new MainMenuServiceImpl(mainMenuView);
 
         //Create controllers
+        EventGenreController eventGenreController = new EventGenreController(genreView);
         AuthController authController = new AuthController(loginView, authService);
         RegisterController registerController = new RegisterController(registerView);
         FirstController firstController = new FirstController(firstView);
         MainMenuController mainMenuController = new MainMenuController(mainMenuService);
-        EventGenreController eventGenreController = new EventGenreController(genreView);
+        SelectEventView selectEventView = new SelectEventView(prompt);
+        SelectEventController selectEventController = new SelectEventController(selectEventView);
+
         //Setup views
         registerView.setRegisterController(registerController);
         registerView.setMainMenuController(mainMenuController);
         loginView.setAuthController(authController);
         loginView.setMainMenuController(mainMenuController);
-        genreView.setSelectDayView(selectDayView);
+        genreView.setSelectEventView(selectEventView);
 
         //Setup controllers
         registerController.setAuthService(authService);
         firstController.setAuthController(authController);
         firstController.setRegisterController(registerController);
         firstController.setView(firstView);
+        eventGenreController.setUserHandler(userHandler);
 
         //Client
-        mainMenuService.setSelectDayView(selectDayView);
+        mainMenuService.setSelectEventView(selectEventView);
         mainMenuService.setUserHandler(userHandler);
         mainMenuService.setGenreView(genreView);
 
