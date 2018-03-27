@@ -21,7 +21,6 @@ public class EventManager {
 	private final int SEPTEMBER = 30;
 	private final int OCTOBER = 31;
 	private final int NOVEMBER = 30;
-	private final int DECEMBER = 31;
 
     private List<Event> events;
 
