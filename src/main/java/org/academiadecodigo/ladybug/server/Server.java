@@ -40,7 +40,7 @@ public class Server {
      * Wait for a client to be accepted by the server
      * and add a server worker when the client joined
      *
-     * @throws IOException exception in case the whole thing get fucked
+     * @throws IOException exception in case the whole thing gets fucked
      */
     public void acceptingClients() throws IOException {
         while (serverSocket.isBound()){
@@ -57,7 +57,5 @@ public class Server {
 
         serverSocket.close();
     }
-
-
 }
 

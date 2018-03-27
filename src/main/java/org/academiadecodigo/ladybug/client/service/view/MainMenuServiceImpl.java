@@ -47,4 +47,7 @@ public class MainMenuServiceImpl implements MainMenuService {
 	public void setGenreView(GenreView genreView) {
 		this.genreView = genreView;
 	}
+
+
+
 }

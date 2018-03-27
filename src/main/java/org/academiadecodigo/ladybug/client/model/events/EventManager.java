@@ -11,16 +11,16 @@ import java.util.List;
 public class EventManager {
 
 	private final int JANUARY = 31;
-	private final int FEBRUARY = 28;
-	private final int MARCH = 31;
-	private final int APRIL = 30;
-	private final int MAY = 31;
-	private final int JUNE = 30;
-	private final int JULY = 31;
-	private final int AUGUST = 31;
-	private final int SEPTEMBER = 30;
-	private final int OCTOBER = 31;
-	private final int NOVEMBER = 30;
+	private final int FEBRUARY = 28 + JANUARY;
+	private final int MARCH = 31 + FEBRUARY;
+	private final int APRIL = 30 + MARCH;
+	private final int MAY = 31 + APRIL;
+	private final int JUNE = 30 + MAY;
+	private final int JULY = 31 + JUNE;
+	private final int AUGUST = 31 + JULY;
+	private final int SEPTEMBER = 30 + AUGUST;
+	private final int OCTOBER = 31 + SEPTEMBER;
+	private final int NOVEMBER = 30 + OCTOBER;
 
     private List<Event> events;
 
@@ -47,34 +47,34 @@ public class EventManager {
 				day += JANUARY;
 				break;
 			case 3:
-				day += JANUARY + FEBRUARY;
+				day += FEBRUARY;
 				break;
 			case 4:
-				day += JANUARY + FEBRUARY + MARCH;
+				day += MARCH;
 				break;
 			case 5:
-				day += JANUARY + FEBRUARY + MARCH + APRIL;
+				day += APRIL;
 				break;
 			case 6:
-				day += JANUARY + FEBRUARY + MARCH + APRIL + MAY;
+				day += MAY;
 				break;
 			case 7:
-				day += JANUARY + FEBRUARY + MARCH + APRIL + MAY + JUNE;
+				day += JUNE;
 				break;
 			case 8:
-				day += JANUARY + FEBRUARY + MARCH + APRIL + MAY + JUNE + JULY;
+				day += JULY;
 				break;
 			case 9:
-				day += JANUARY + FEBRUARY + MARCH + APRIL + MAY + JUNE + JULY + AUGUST;
+				day += AUGUST;
 				break;
 			case 10:
-				day += JANUARY + FEBRUARY + MARCH + APRIL + MAY + JUNE + JULY + AUGUST + SEPTEMBER;
+				day += SEPTEMBER;
 				break;
 			case 11:
-				day += JANUARY + FEBRUARY + MARCH + APRIL + MAY + JUNE + JULY + AUGUST + SEPTEMBER + OCTOBER;
+				day += OCTOBER;
 				break;
 			case 12:
-				day += JANUARY + FEBRUARY + MARCH + APRIL + MAY + JUNE + JULY + AUGUST + SEPTEMBER + OCTOBER + NOVEMBER;
+				day += NOVEMBER;
 				break;
 		}
 

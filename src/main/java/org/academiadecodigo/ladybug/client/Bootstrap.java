@@ -50,4 +50,8 @@ public class Bootstrap {
 
         firstController.init();
     }
+
+    public void start(){
+
+    }
 }

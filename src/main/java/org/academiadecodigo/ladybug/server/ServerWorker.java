@@ -1,9 +1,10 @@
 package org.academiadecodigo.ladybug.server;
 
 import org.academiadecodigo.ladybug.client.Bootstrap;
+import org.academiadecodigo.ladybug.client.view.FirstView;
 
+import javax.sql.rowset.FilteredRowSet;
 import java.io.*;
-import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Scanner;
 
@@ -14,6 +15,8 @@ public class ServerWorker implements Runnable {
     private  final PrintWriter out;
     private String origClient;
     private Scanner scanner;
+    private Bootstrap bootstrap = new Bootstrap();
+    private FirstView firstView;
 
     public ServerWorker(Socket clientSocket)
             throws IOException {
@@ -24,24 +27,10 @@ public class ServerWorker implements Runnable {
         out = new PrintWriter(new OutputStreamWriter(clientSocket.getOutputStream()), true);
     }
 
-    public void send(String message) {
-        out.write(message + "\n");
-        out.flush();
-    }
-
-    public void receive(){
-    	String message = "";
-    	scanner = new Scanner(System.in);
-    	message = scanner.nextLine();
-	    out.write("Server: " + message + "\n");
-	    out.flush();
-    }
-
-
     @Override
     public void run() {
 	    System.out.println("Started: " + Thread.currentThread().getName());
-
+	    firstView.setPrintWriter(out);
 	    while (!clientSocket.isClosed()){
 		    try {
 			    String line = in.readLine();
