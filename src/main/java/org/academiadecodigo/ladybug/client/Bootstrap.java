@@ -2,6 +2,7 @@ package org.academiadecodigo.ladybug.client;
 
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.ladybug.client.controller.*;
+import org.academiadecodigo.ladybug.client.model.events.EventManager;
 import org.academiadecodigo.ladybug.client.service.AuthService;
 import org.academiadecodigo.ladybug.client.service.JdbcAuthService;
 import org.academiadecodigo.ladybug.client.service.view.MainMenuService;
@@ -22,7 +23,7 @@ public class Bootstrap {
         //Create services
         AuthService authService = new JdbcAuthService();
         MainMenuService mainMenuService = new MainMenuServiceImpl(mainMenuView);
-
+	    EventManager eventManager = new EventManager();
         //Create controllers
         AuthController authController = new AuthController(loginView, authService);
         RegisterController registerController = new RegisterController(registerView);
@@ -30,6 +31,7 @@ public class Bootstrap {
         MainMenuController mainMenuController = new MainMenuController(mainMenuService);
         EventGenreController eventGenreController = new EventGenreController(genreView);
         //Setup views
+	    eventManager.setPrompt(prompt);
         registerView.setRegisterController(registerController);
         registerView.setMainMenuController(mainMenuController);
         loginView.setAuthController(authController);

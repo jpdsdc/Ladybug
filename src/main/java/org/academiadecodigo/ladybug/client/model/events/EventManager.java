@@ -1,5 +1,6 @@
 package org.academiadecodigo.ladybug.client.model.events;
 
+import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.ladybug.client.view.SelectDayView;
 
 import java.util.Calendar;
@@ -36,7 +37,8 @@ public class EventManager {
     // returns events based on the day of the week they're taking place
 	Calendar calendar = Calendar.getInstance();
 	Date today = new Date();
-	SelectDayView selectDayView = new SelectDayView();
+	Prompt prompt;
+	private SelectDayView selectDayView = new SelectDayView(prompt);
 
 	public void getWeekdayofEvent(int month, int day) {
 		switch (month) {
@@ -83,4 +85,7 @@ public class EventManager {
 		String weekday = selectDayView.setWeekdays(calendar.get(Calendar.DAY_OF_WEEK));
 	}
 
+	public void setPrompt(Prompt prompt) {
+		this.prompt = prompt;
+	}
 }

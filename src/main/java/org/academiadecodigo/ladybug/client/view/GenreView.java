@@ -23,8 +23,6 @@ public class GenreView extends AbstractView {
 		menuInputScanner.setMessage(Messages.SELECTGENRE + "");
 
 		selected = prompt.getUserInput(menuInputScanner);
-
-		selectDayView.show();
 	}
 
 	public String getSelected() {
