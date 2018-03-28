@@ -55,6 +55,6 @@ public class Bootstrap {
         mainMenuService.setGenreView(genreView);
 
         firstController.init();
-        userHandler.init("localhost", 8080);
+//        userHandler.init("localhost", 8080);
     }
 }

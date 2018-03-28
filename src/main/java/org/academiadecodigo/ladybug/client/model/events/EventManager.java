@@ -4,7 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 public class EventManager {
@@ -19,6 +18,9 @@ public class EventManager {
         try {
             addEvent(EventType.MOVIE, "Avengers - Infinity War",
                     "super heroes movie",
+                    new Location[]{Location.LISBOA}, formatter.parse("7-Jun-2019"), 10);
+            addEvent(EventType.MUSIC, "Avengers 2 - Infinity War",
+                    "super heroes movie 2",
                     new Location[]{Location.LISBOA}, formatter.parse("7-Jun-2019"), 10);
         } catch (ParseException e) {
             e.printStackTrace();

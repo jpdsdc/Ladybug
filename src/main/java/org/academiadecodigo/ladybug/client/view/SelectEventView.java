@@ -6,6 +6,7 @@ import org.academiadecodigo.ladybug.client.controller.SelectEventController;
 import org.academiadecodigo.ladybug.client.model.events.Event;
 import org.academiadecodigo.ladybug.client.model.events.EventManager;
 
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -33,7 +34,10 @@ public class SelectEventView extends AbstractView {
 
         int i = 0;
         for(Event stock : eventManager.getEvents()){
-            names[i] += stock.getName();
+            if(stock == null){
+                continue;
+            }
+            names[i] = stock.getName();
             i++;
         }
 
