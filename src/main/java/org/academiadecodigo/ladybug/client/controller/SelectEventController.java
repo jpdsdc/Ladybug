@@ -24,17 +24,10 @@ public class SelectEventController extends AbstractController{
         SelectEventView selectEventView = (SelectEventView) view;
 
         for(Event e : eventManager.getEvents()){
-            if(selectEventView.getSelected() == null){
-                continue;
-            }
-            
             if(selectEventView.getSelected().contains(e.getName())){
-                System.out.println(e.getName());
+                System.out.println("Comprado");
             }
         }
     }
 
-    public List<Event> getEvents() {
-        return eventManager.getEvents();
-    }
 }
