@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Server {
 
-    private final int PORT = 8080;
+    private final int PORT = 6060;
 
     private List<ServerWorker> workers;
     private ServerSocket serverSocket;

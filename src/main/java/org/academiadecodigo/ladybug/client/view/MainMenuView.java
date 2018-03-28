@@ -15,7 +15,7 @@ public class MainMenuView extends AbstractView {
         System.out.println(Messages.WELCOME);
         System.out.println(Messages.LADYBUG);
 
-        menuOptions = new String[]{"Select a day", "Select a event genre", "Exit"};
+        menuOptions = new String[]{"Select a event", "Select a event genre", "Exit"};
     }
 
     @Override

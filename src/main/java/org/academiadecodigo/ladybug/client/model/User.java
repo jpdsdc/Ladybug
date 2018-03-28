@@ -1,5 +1,7 @@
 package org.academiadecodigo.ladybug.client.model;
 
+import org.academiadecodigo.ladybug.client.model.events.Event;
+
 public class User {
 
     private String username;
@@ -12,6 +14,10 @@ public class User {
 
     public String getUsername() {
         return username;
+    }
+
+    public void buy(Event event){
+        //TODO: to be implemented
     }
 
     @Override

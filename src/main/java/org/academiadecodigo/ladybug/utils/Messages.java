@@ -10,6 +10,7 @@ public enum Messages {
 		    "╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗       ██║   ╚██████╔╝\n" +
 		    " ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝       ╚═╝    ╚═════╝ \n" + "" +
 		    "                                                                                    \n")),
+
 	LADYBUG("\n" + Ansi.Red.colorize("██╗      █████╗ ██████╗ ██╗   ██╗██████╗ ██╗   ██╗ ██████╗     ████████╗██╗ ██████╗██╗  ██╗███████╗████████╗██╗     ██╗███╗   ██╗███████╗██╗\n" +
 			"██║     ██╔══██╗██╔══██╗╚██╗ ██╔╝██╔══██╗██║   ██║██╔════╝     ╚══██╔══╝██║██╔════╝██║ ██╔╝██╔════╝╚══██╔══╝██║     ██║████╗  ██║██╔════╝██║\n" +
 			"██║     ███████║██║  ██║ ╚████╔╝ ██████╔╝██║   ██║██║  ███╗       ██║   ██║██║     █████╔╝ █████╗     ██║   ██║     ██║██╔██╗ ██║█████╗  ██║\n" +
@@ -17,6 +18,7 @@ public enum Messages {
 			"███████╗██║  ██║██████╔╝   ██║   ██████╔╝╚██████╔╝╚██████╔╝       ██║   ██║╚██████╗██║  ██╗███████╗   ██║   ███████╗██║██║ ╚████║███████╗██╗\n" +
 			"╚══════╝╚═╝  ╚═╝╚═════╝    ╚═╝   ╚═════╝  ╚═════╝  ╚═════╝        ╚═╝   ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝╚═╝╚═╝  ╚═══╝╚══════╝╚═╝\n" + "  " +
 			"                                                                                                                                          \n")),
+
 	INITIALMESSAGE(Ansi.HighIntensity.colorize(Ansi.Blue.colorize("Please login or register to access the ticketLine."))),
 	ENTERUSERNAME(Ansi.HighIntensity.colorize(Ansi.Blue.colorize("Enter your username: "))),
 	ENTERPASSWORD(Ansi.HighIntensity.colorize(Ansi.Blue.colorize("Enter your password: "))),
@@ -24,7 +26,8 @@ public enum Messages {
 	CHOOSEPASSWORD(Ansi.HighIntensity.colorize(Ansi.Blue.colorize("New password: "))),
 	CANTREGISTER(Ansi.HighIntensity.colorize(Ansi.Red.colorize("Unable to register, please try again! "))),
 	CANTLOGIN(Ansi.HighIntensity.colorize(Ansi.Red.colorize("Wrong username or password. Try again "))),
-	SELECTDAY(Ansi.HighIntensity.colorize(Ansi.Blue.colorize("Day: ")));
+	SELECTDAY(Ansi.HighIntensity.colorize(Ansi.Blue.colorize("Day: "))),
+	SELECTGENRE(Ansi.HighIntensity.colorize(Ansi.Blue.colorize("Genre: ")));
 
     String message;
 
